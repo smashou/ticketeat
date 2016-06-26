@@ -9,3 +9,9 @@ user:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml" 
+
+# API REST 
+# rest : 
+#   type : rest 
+#   resource : "routing_rest.yml"
+#   prefix : /api

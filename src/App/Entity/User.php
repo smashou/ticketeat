@@ -18,5 +18,31 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * Customer
+     * @ORM\ManyToOne(targetEntity="App\Entity\Customer", inversedBy="users")
+     * @ORM\JoinColumn(name="customer", referencedColumnName="id", nullable=true)
+     */
+    protected $customer;
+
+
+    /**
+     * @return customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @param customer
+     * @return customer
+     */
+    public function setCustomer($customer)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
 
 }

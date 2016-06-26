@@ -36,6 +36,14 @@ class Customer
      */
     private $name;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $reference;
+
 
     /**
      * @var \DateTime
@@ -62,7 +70,7 @@ class Customer
 
     /**
      * Users
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="customerSpace", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="customer", cascade={"remove"})
      */
     private $users;
 
@@ -99,6 +107,29 @@ class Customer
     }
 
     /**
+     * Get reference
+     *
+     * @return string 
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $name
+     * @return Customer
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
      * Get name
      *
      * @return string 
@@ -112,7 +143,7 @@ class Customer
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return CustomerSpace
+     * @return Customer
      */
     public function setCreatedAt($createdAt)
     {
@@ -135,7 +166,7 @@ class Customer
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return CustomerSpace
+     * @return Customer
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -158,7 +189,7 @@ class Customer
      * Set deletedAt
      *
      * @param \DateTime $deletedAt
-     * @return CustomerSpace
+     * @return Customer
      */
     public function setDeletedAt($deletedAt)
     {
@@ -189,7 +220,7 @@ class Customer
     /**
      * Add User
      * @param User $user
-     * @return CustomerSpace
+     * @return Customer
      */
     public function addUser(User $user)
     {

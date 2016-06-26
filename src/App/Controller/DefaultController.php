@@ -16,6 +16,7 @@ class DefaultController extends Controller
     	$authorization_checker = $this->get('security.authorization_checker');
 
 		if (false === $authorization_checker->isGranted('ROLE_ADMIN') && 
+            false === $authorization_checker->isGranted('ROLE_SUPER_ADMIN') && 
             false === $authorization_checker->isGranted('ROLE_USER')) {
 			return $this->render('App:Home:index.html.twig');
 		}

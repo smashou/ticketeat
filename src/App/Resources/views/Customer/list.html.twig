@@ -1,0 +1,41 @@
+{% extends 'App::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <div class="alert alert-{{ label }} flashmess">
+                {{ flash|trans }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <h1>{{ 'customer_list'|trans }} <a href="{{ path('customer_add') }}" class="btn btn-success" title="{{ 'customer_add'|trans }}" >{{ 'customer_add'|trans }}</a></h1>
+
+    {% if list is not null and list is not empty %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{ 'id'|trans }}</th>
+                    <th>{{ 'name'|trans }}</th>
+                    <th>{{ 'reference'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in list %}
+                    <tr>
+                        <td><a href="{{ path('customer_edit', {'id' : item.id}) }}" class="btn btn-xs btn-default" data-tooltip="tooltip" data-placement="top" title="{{ 'detail'|trans }}" >{{ item.id }}</a></td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.reference }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    </div>
+    </div>
+
+{% endblock %}
+

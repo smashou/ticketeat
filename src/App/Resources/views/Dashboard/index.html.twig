@@ -1,1 +1,6 @@
-Dashboard
+{% extends 'App::layout.html.twig' %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<a href="{{ path('fos_user_security_logout') }}" title="{{ 'logout'|trans}}">{{ 'logout'|trans}}</a>
+{% endblock %}

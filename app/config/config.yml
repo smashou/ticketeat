@@ -92,3 +92,12 @@ fos_rest:
         default_engine: twig
     routing_loader:
         default_format: json
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                filters:
+                    softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: true

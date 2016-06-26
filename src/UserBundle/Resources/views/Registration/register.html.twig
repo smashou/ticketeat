@@ -1,0 +1,9 @@
+{% extends 'App::layout.html.twig' %}
+
+
+{% block content %}
+    <h1>{{ ('admin_user_add')|trans }}</h1>
+    {% block fos_user_content %}
+        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    {% endblock fos_user_content %}
+{% endblock  %}

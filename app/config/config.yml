@@ -36,7 +36,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
+    globals:
+        asset_version: "%asset_version%"
+        ga_tracking: "%ga_tracking%"        
 # Doctrine Configuration
 doctrine:
     dbal:

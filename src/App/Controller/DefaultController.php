@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,9 +13,13 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+    	$authorization_checker = $this->get('security.authorization_checker');
+
+		if (false === $authorization_checker->isGranted('ROLE_ADMIN') && 
+            false === $authorization_checker->isGranted('ROLE_USER')) {
+			return $this->render('App:Home:index.html.twig');
+		}
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        return $this->render('App:Dashboard:index.html.twig');
     }
 }
